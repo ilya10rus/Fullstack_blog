@@ -3,7 +3,6 @@ import { useMatch, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Comments, PostContent, PostForm } from './components';
 import styled from 'styled-components';
-
 import { RESET_POST_DATA, loadPostAsync } from '../../actions';
 import { selectPost } from '../../selectors';
 import { Error, PrivatContent } from '../../components';

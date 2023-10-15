@@ -16,7 +16,13 @@ const PostFormContainer = ({
 	const [titlelValue, setTitleValue] = useState(title);
 	const contentRef = useRef(null);
 	const dispatch = useDispatch();
-
+	const options = {
+		year: 'numeric',
+		month: 'long',
+		day: 'numeric',
+		hour: 'numeric',
+		minute: 'numeric',
+	};
 	const navigate = useNavigate();
 
 	const onSave = () => {
@@ -55,7 +61,7 @@ const PostFormContainer = ({
 
 			<SpecialPanel
 				id={id}
-				publishedAt={publishedAt}
+				publishedAt={new Date(publishedAt).toLocaleDateString('ru-GB', options)}
 				margin={'-20px 0 20px'}
 				editButton={
 					<Icon

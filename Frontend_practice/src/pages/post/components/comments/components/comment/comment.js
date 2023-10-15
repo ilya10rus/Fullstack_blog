@@ -11,6 +11,13 @@ const CommnetContainer = ({ className, postId, id, author, content, publishedAt 
 	const userRole = useSelector(selectUserRole);
 	const dispatch = useDispatch();
 	const isAdminOrModerator = [ROLE.ADMIN, ROLE.MODERATOR].includes(userRole);
+	const options = {
+		year: 'numeric',
+		month: 'long',
+		day: 'numeric',
+		hour: 'numeric',
+		minute: 'numeric',
+	};
 
 	const onCommentRemove = (commentId) => {
 		dispatch(
@@ -46,7 +53,7 @@ const CommnetContainer = ({ className, postId, id, author, content, publishedAt 
 							size={'18px'}
 							inactive={true}
 						/>
-						{publishedAt}
+						{new Date(publishedAt).toLocaleDateString('ru-GB', options)}
 					</div>
 				</div>
 				<div className="comment-text">{content}</div>

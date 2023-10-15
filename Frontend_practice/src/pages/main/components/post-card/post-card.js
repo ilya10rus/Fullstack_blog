@@ -2,6 +2,13 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Icon } from '../../../../components';
 import { Link } from 'react-router-dom';
+const options = {
+	year: 'numeric',
+	month: 'long',
+	day: 'numeric',
+	hour: 'numeric',
+	minute: 'numeric',
+};
 
 const PostCardContainer = ({
 	className,
@@ -25,7 +32,7 @@ const PostCardContainer = ({
 								size="18px"
 								inactive={true}
 							/>
-							{publishedAt}
+							{new Date(publishedAt).toLocaleDateString('ru-GB', options)}
 						</div>
 
 						<div className="comments-count">

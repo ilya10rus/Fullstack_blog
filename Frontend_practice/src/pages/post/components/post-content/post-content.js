@@ -9,14 +9,20 @@ const PostContentContainer = ({
 	post: { id, title, imageUrl, content, publishedAt },
 }) => {
 	const navigate = useNavigate();
-
+	const options = {
+		year: 'numeric',
+		month: 'long',
+		day: 'numeric',
+		hour: 'numeric',
+		minute: 'numeric',
+	};
 	return (
 		<div className={className}>
 			<img src={imageUrl} alt={title} />
 			<H2>{title}</H2>
 			<SpecialPanel
 				id={id}
-				publishedAt={publishedAt}
+				publishedAt={new Date(publishedAt).toLocaleDateString('ru-GB', options)}
 				margin={'-20px 0 20px'}
 				editButton={
 					<Icon

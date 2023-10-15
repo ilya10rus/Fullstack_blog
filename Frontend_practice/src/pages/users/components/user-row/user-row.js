@@ -17,9 +17,15 @@ const UserRowContainer = ({
 }) => {
 	const [initialRoleId, setInitialRoleId] = useState(userRoleId);
 	const [selectedRoleId, setSelectedRoleId] = useState(userRoleId);
-
 	const onRoleCange = ({ target }) => {
 		setSelectedRoleId(Number(target.value));
+	};
+	const options = {
+		year: 'numeric',
+		month: 'long',
+		day: 'numeric',
+		hour: 'numeric',
+		minute: 'numeric',
 	};
 
 	const onRoleSave = (userId, newUserRoleId) => {
@@ -34,7 +40,9 @@ const UserRowContainer = ({
 		<div className={className}>
 			<TableRow border={true}>
 				<div className="user-column">{login}</div>
-				<div className="registered-at-column">{registeredAt}</div>
+				<div className="registered-at-column">
+					{new Date(registeredAt).toLocaleDateString('ru-GB', options)}
+				</div>
 
 				<div className="role-column">
 					<select value={selectedRoleId} onChange={onRoleCange}>
